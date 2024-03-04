@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Genre List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <table class="table table-bordered table-dark" align="center">
+            <center>
+                <u>
+                    <h1>Movie List</h1>
+                </u>
+                <a class="btn btn-outline-success" href="{% url 'movie'  %}">ADD
+                </a>
+            </center>
+            <tr>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Date</th>
+                <th>Duration</th>
+                <th>Summary</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+            {% for i in qs%}
+            <tr>
+                <style>
+                    table {
+                        text-align: center;
+                    }
+                </style>
+                <td>{{i.title}}</td>
+                <td>{{i.genre}}</td>
+                <td>{{i.release_date}}
+                <td>{{i.duration}}</td>
+                <td>{{i.summary}}</td>
+                <td>
+                    <a class="btn btn-outline-success" href="{% url 'mov-details' i.id %}">View
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-success" href="{% url 'mov-update' i.id %}">Update
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-outline-success" href="{% url 'mov-delete' i.id %}">Delete
+                    </a>
+                </td>
+            </tr>
+            {%endfor%}
+        </table>
+    </div>
+
+</body>
+
+</html>
